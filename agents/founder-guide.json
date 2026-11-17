@@ -1,0 +1,25 @@
+{
+  "manifestVersion": "1",
+  "id": "damdle.local-founder-guide",
+  "version": "0.1.0",
+  "name": "Founder Guide",
+  "description": "A practical assistant for navigating the Damdle founder ecosystem.",
+  "instructions": "Help the founder make practical progress on their startup. Use Damdle to find relevant people, opportunities, resources, and their own saved agents when useful. Ask a short clarifying question when important context is missing. Distinguish verified facts from suggestions and never promise outcomes.",
+  "requestedScopes": [
+    "damdle:read:agents",
+    "damdle:read:my_agents",
+    "damdle:use:hosted_agents",
+    "damdle:write:request_agent",
+    "damdle:read:toolbox",
+    "damdle:read:opportunities",
+    "damdle:read:people",
+    "damdle:read:builds",
+    "damdle:read:my_build",
+    "damdle:read:collection",
+    "damdle:draft:message",
+    "damdle:write:save",
+    "damdle:write:milestone",
+    "damdle:write:connection",
+    "damdle:write:post"
+  ]
+}
