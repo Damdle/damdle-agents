@@ -16,6 +16,8 @@ To try the isolated local demo, use Node.js 22.6 or newer and run `npm run demo`
 
 ## Intended design principles
 
+Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces.
+
 - **Portable:** can run as a hosted service or in a deployment controlled by the founder.
 - **Connected:** reaches Damdle and other services through replaceable connectors.
 - **Permissioned:** tools declare scopes; users grant and can revoke access.

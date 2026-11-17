@@ -46,6 +46,10 @@ The roadmap prioritizes a dependable open-source core and one useful ecosystem c
 - [ ] Finalize verified private security and conduct contacts before inviting contributions.
 - [ ] Establish release/versioning and a public support path before inviting broad contributions.
 
+## Integration planning
+
+- [x] Define the connector contract and a workflow-first integration selection policy in [integration strategy](integration-strategy.md).
+
 ## Release gate
 
 Do not describe the project as ready for general self-hosting until a new operator can follow the setup guide, connect a model and one service, inspect/revoke grants, understand data storage, and run the documented checks from a clean environment.
