@@ -41,6 +41,14 @@ To remove one chat and its key:
 npm run agent -- --delete-chat <conversation-id>
 ```
 
+To remove the selected profile's local OAuth registration and tokens:
+
+```powershell
+npm run agent -- --forget-credentials
+```
+
+This only deletes local keyring entries. Revoke the server-side grant in Damdle as described below.
+
 To revoke the connector, disconnect the application from Damdle's Connected Apps settings. Removing local keyring entries only removes this host's copy of credentials; it does not revoke the server-side grant.
 
 ## Upgrades

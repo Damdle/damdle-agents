@@ -19,6 +19,7 @@ Usage:
   npm run agent -- --chat
   npm run agent -- --resume <conversation-id>
   npm run agent -- --delete-chat <conversation-id>
+  npm run agent -- --forget-credentials
   npm run agent -- --agent <agent.json> "your founder task"
 
 Required environment:
@@ -110,14 +111,21 @@ async function main(): Promise<void> {
   const mode = args[0];
   const chatMode = mode === "--chat" || mode === "--resume";
   const deleteMode = mode === "--delete-chat";
+  const forgetCredentialsMode = mode === "--forget-credentials";
   if ((mode === "--resume" || deleteMode) && args.length !== 2) throw new Error(`${mode} requires one conversation id.`);
+  if (forgetCredentialsMode && args.length !== 1) throw new Error("Use --forget-credentials without additional arguments.");
   if (mode === "--chat" && args.length !== 1) throw new Error("Use --resume <conversation-id> to open an existing chat.");
-  if (deleteMode || mode === "--chat" || mode === "--resume") {
+  if (forgetCredentialsMode || deleteMode || mode === "--chat" || mode === "--resume") {
     const serverUrl = process.env.DAMDLE_MCP_URL;
-    if (!serverUrl) throw new Error("Set DAMDLE_MCP_URL to identify the local conversation store.");
+    if (!serverUrl) throw new Error("Set DAMDLE_MCP_URL to identify the local profile.");
     const profile = process.env.DAMDLE_AGENT_PROFILE ?? "default";
     const host = new LocalDamdleMcpHost({ serverUrl, profile, onAuthorizationUrl: () => undefined });
-    const store = new EncryptedConversationStore(host.connectionId, undefined, process.env.DAMDLE_AGENT_PROFILE ?? "default");
+    if (forgetCredentialsMode) {
+      await host.forgetLocalCredentials();
+      stdout.write(`Forgot local OAuth credentials for profile ${profile}. Server-side access remains active until revoked in Damdle.\n`);
+      return;
+    }
+    const store = new EncryptedConversationStore(host.connectionId, undefined, profile);
     if (deleteMode) {
       await store.delete(args[1]);
       stdout.write(`Deleted local conversation ${args[1]} and its encryption key.\n`);

@@ -24,6 +24,7 @@ For a resumable interactive chat:
 npm run agent -- --chat
 npm run agent -- --resume 00000000-0000-4000-8000-000000000000
 npm run agent -- --delete-chat 00000000-0000-4000-8000-000000000000
+npm run agent -- --forget-credentials
 ```
 
 Chats are encrypted with AES-256-GCM. Each chat key is stored in the OS credential store; encrypted files live in `~/.damdle-agents/conversations/<server-id>/<profile>/`. `DAMDLE_AGENT_PROFILE` separates histories when multiple founders share one OS login. The model receives the last 12 previous turns plus the current turn. Each stored chat is limited to 5 MiB of plaintext. Type `/exit` to finish; the CLI prints the conversation id and resume command. Deleting a chat removes its encrypted file and key. Audit events remain in a separate, unencrypted JSONL file and do not include prompts or tool results.
@@ -55,6 +56,6 @@ const connection = await requestLocalConnection(connector.manifest, {
 
 The callback port defaults to `43173` and binds only to `127.0.0.1`. If it is occupied, configure `callbackPort` and register the resulting callback URL with the OAuth authorization server. The default provider uses dynamic client registration, so the Damdle Supabase OAuth server must allow it. For local development, an HTTP loopback MCP endpoint and callback are supported; remote endpoints and authorization servers require HTTPS.
 
-`disconnect()` closes the MCP session while preserving local OAuth credentials. `forgetLocalCredentials()` also removes those credentials from the OS keyring. To revoke Damdle access, the founder should additionally disconnect the app from Damdle's Connected Apps settings; deleting local credentials alone does not revoke the server-side OAuth grant.
+`disconnect()` closes the MCP session while preserving local OAuth credentials. `forgetLocalCredentials()` and `--forget-credentials` remove the selected profile's credentials from the OS keyring without starting a browser login. To revoke Damdle access, the founder should additionally disconnect the app from Damdle's Connected Apps settings; deleting local credentials alone does not revoke the server-side OAuth grant.
 
 The local scope prompt requires a real terminal and defaults every permission to deny. It does not persist those local grants, so the founder reviews them again in a new process session. The local chat store and OAuth keyring entry are per OS user and profile; choose a distinct `DAMDLE_AGENT_PROFILE` for each Damdle account sharing one OS login. This host does not yet provide cross-device sessions or a container/server credential backend. A production self-hosting setup must preserve Damdle's server-side authorization checks.

@@ -156,7 +156,14 @@ export class LocalDamdleMcpHost implements DamdleMcpClientProvider {
 
   async forgetLocalCredentials(): Promise<void> {
     await this.disconnect();
-    await this.provider?.clear();
+    const provider = this.provider ?? await KeyringOAuthProvider.create({
+      connectionId: this.connectionId,
+      profile: this.profile,
+      serverUrl: this.serverUrl,
+      redirectUrl: LocalDamdleMcpHost.callbackAddress(this.callbackPort),
+      onAuthorizationUrl: this.onAuthorizationUrl,
+    });
+    await provider.clear();
     this.provider = undefined;
   }
 
