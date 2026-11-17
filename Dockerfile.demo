@@ -1,0 +1,9 @@
+FROM node:22-bookworm
+
+WORKDIR /workspace
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
+COPY . .
+
+# This image runs only the credential-free in-memory demo.
+CMD ["npm", "run", "demo"]

@@ -14,6 +14,8 @@ See [Architecture](docs/architecture.md), [Roadmap](docs/roadmap.md), [Self-host
 
 To try the isolated local demo, use Node.js 22.6 or newer and run `npm run demo` from this folder. It uses an in-memory audit sink and sample data only. `npm run build` compiles the workspace. An initial [local Node host](packages/hosts/node-local/README.md) implements OAuth authorization, local scope consent, secure credential storage, one-turn and resumable CLI chats, encrypted conversation history, and a local audit log. You can define custom JSON agents; see [agents/](agents/README.md). This is not yet a production deployment recipe.
 
+The credential-free demo can also run in a repeatable container: `docker build -f Dockerfile.demo -t damdle-agents-demo .` followed by `docker run --rm damdle-agents-demo`. `Dockerfile.demo` is intentionally limited to the sample demo; it is not a self-hosted Damdle service or a production agent host.
+
 ## Intended design principles
 
 Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces.

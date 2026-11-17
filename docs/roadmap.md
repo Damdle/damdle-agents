@@ -30,6 +30,7 @@ The roadmap prioritizes a dependable open-source core and one useful ecosystem c
 - [x] Add encrypted local conversation history with per-chat keyring keys and explicit deletion.
 - [x] Document local setup, model and secret configuration, local persistence, and how to revoke or delete local state.
 - [x] Document upgrades and backups for the current local self-hosting boundary.
+- [x] Add a credential-free demo container for repeatable contributor setup.
 - Provide a container or similarly repeatable deployment path after the runtime boundary is stable.
 
 ## Stage 3 — Damdle ecosystem connector
