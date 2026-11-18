@@ -21,7 +21,7 @@ Run `npm run demo:mcp` to see that adapter dispatch an in-memory read tool witho
 
 ## Intended design principles
 
-Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces. The [publication checklist](docs/publication-checklist.md) records the gates for creating the public repository.
+Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces. The [versioning policy](docs/versioning.md) describes the experimental contract boundaries. The [publication checklist](docs/publication-checklist.md) records the gates for creating the public repository.
 
 - **Portable:** can run as a hosted service or in a deployment controlled by the founder.
 - **Connected:** reaches Damdle and other services through replaceable connectors.
