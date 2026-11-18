@@ -16,6 +16,8 @@ To try the isolated local demo, use Node.js 22.6 or newer and run `npm run demo`
 
 The credential-free demo can also run in a repeatable container: `docker build -f Dockerfile.demo -t damdle-agents-demo .` followed by `docker run --rm damdle-agents-demo`. `Dockerfile.demo` is intentionally limited to the sample demo; it is not a self-hosted Damdle service or a production agent host.
 
+For other MCP-compatible services, `packages/connectors/mcp` provides a manifest-driven adapter for explicit read and draft tools. It does not auto-discover remote tools or authorize generic writes.
+
 ## Intended design principles
 
 Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces. The [publication checklist](docs/publication-checklist.md) records the gates for creating the public repository.

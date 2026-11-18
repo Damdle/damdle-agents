@@ -15,6 +15,7 @@ The roadmap prioritizes a dependable open-source core and one useful ecosystem c
 - [x] Add a bounded provider-neutral turn loop and an OpenAI Responses API adapter.
 - [x] Compile and exercise the local demo, then revise the contracts based on use.
 - [x] Prototype a Damdle MCP adapter for the app's current read, draft, and proposal tools.
+- [x] Add a generic manifest-driven MCP adapter for explicit read and draft integrations.
 - [x] Validate model-generated tool inputs against JSON Schema, including declared formats, before connector invocation.
 - [x] Add an initial local Node host for MCP OAuth, callback state validation, and OS keyring credential storage.
 - [x] Ask the local founder to approve connector scopes explicitly; default to denying each permission.
