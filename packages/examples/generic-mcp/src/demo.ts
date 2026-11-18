@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Damdle
 import { GenericMcpConnector, type GenericMcpClient } from "../../../connectors/mcp/src/index.js";
 import { dispatchTool } from "../../../core/src/dispatch.js";
 import type { AuditEvent, AuditSink, JsonValue } from "../../../contracts/src/index.js";

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Damdle
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { AgentConnector, AuditEvent, AuditSink, ToolInvocation } from "../../contracts/src/index.js";

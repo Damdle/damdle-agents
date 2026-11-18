@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Damdle
 import { createInterface } from "node:readline/promises";
 import { stdin, stdout } from "node:process";
 import type { ConnectorManifest, ConnectorConnection } from "../../../contracts/src/index.js";

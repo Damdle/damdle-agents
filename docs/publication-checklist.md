@@ -9,16 +9,16 @@ This repository is an internal release candidate. Complete every owner gate befo
 - [ ] Run `npm ci`, `npm run check:publication`, `npm run build`, `npm run agent -- --help`, `npm run demo:mcp`, and `npm run demo` from a clean checkout.
 - [ ] Review the OAuth and Damdle connector behavior with an authorized test account, including sign-in, refresh, scope denial, proposal creation, expiry, and revocation.
 - [ ] Confirm the local host's encrypted conversation storage and key deletion behavior on each supported operating system.
-- [ ] Decide which interfaces are experimental and publish a compatibility/versioning policy.
+- [x] Decide which interfaces are experimental and publish a compatibility/versioning policy. (See `docs/versioning.md`)
 
 ## Owner decisions
 
-- [ ] Select the software license and copyright holder; add the actual license file.
+- [x] Select the software license and copyright holder; add the actual license file. (Apache 2.0, Copyright 2026 Damdle in `LICENSE`)
 - [ ] Select a documentation and example-content license where needed.
 - [ ] Confirm that all contributors and copied materials have the rights needed for publication. Existing app code and assets remain excluded until cleared.
-- [ ] Publish a Damdle trademark and branding policy separate from the software license.
-- [ ] Choose DCO or CLA terms before accepting outside contributions.
-- [ ] Provide a monitored private security contact and enable GitHub private vulnerability reporting.
+- [x] Publish a Damdle trademark and branding policy separate from the software license. (See `TRADEMARK.md`)
+- [x] Choose DCO or CLA terms before accepting outside contributions. (DCO adopted in `CONTRIBUTING.md`, `.github/PULL_REQUEST_TEMPLATE.md`, and `.github/workflows/ci.yml`)
+- [x] Provide a monitored private security contact and enable GitHub private vulnerability reporting. (Contact: security@damdle.com. Enable GitHub private vulnerability reporting in repository settings before announcing.)
 - [ ] Provide a public support channel and maintainer ownership for releases.
 
 ## Repository setup

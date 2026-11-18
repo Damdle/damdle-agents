@@ -2,6 +2,23 @@
 
 Damdle Agents is still experimental. Until the first public release, package and contract versions may change while the maintainers stabilize the boundaries. Every release should state which parts are experimental and which are supported.
 
+## Current experimental status
+
+All public surfaces in this repository are **experimental** until the first versioned release. Interfaces, manifest formats, scope ids, and persistence formats may change without notice. Do not build production systems against them.
+
+The following packages are experimental pre-release:
+
+| Package | Surface | Status |
+|---|---|---|
+| `packages/contracts` | Type contracts, risk semantics, policy helpers | Experimental |
+| `packages/core` | Agent runtime, tool dispatcher | Experimental |
+| `packages/connectors/damdle-mcp` | Damdle ecosystem connector | Experimental — not validated against live accounts |
+| `packages/connectors/mcp` | Generic MCP adapter | Experimental |
+| `packages/models/openai-responses` | OpenAI Responses API adapter | Experimental |
+| `packages/hosts/node-local` | Local Node host, CLI, OAuth, encrypted history | Experimental — security review pending |
+
+No npm packages have been published yet. When packages are published, semantic versioning will apply as described below.
+
 ## Public surfaces
 
 The following are versioned surfaces:

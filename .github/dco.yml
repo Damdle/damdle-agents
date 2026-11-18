@@ -1,0 +1,2 @@
+# Allow bot commits (e.g. Dependabot, automated releases) without DCO sign-off.
+allowRemediatedCommits: true

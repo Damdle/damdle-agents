@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Damdle
 import { AsyncEntry } from "@napi-rs/keyring";
 import type {
   OAuthClientInformationContext,

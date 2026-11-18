@@ -1,12 +1,12 @@
 # Security policy
 
-Damdle Agents is an early prototype and is not ready for production deployment. Do not connect production accounts or place real credentials in sample configuration.
+Damdle Agents is an early-stage project and is not ready for production deployment. Do not connect production accounts or place real credentials in sample configuration.
 
 ## Reporting a vulnerability
 
-After the separate repository is published, use GitHub's **Private vulnerability reporting** for that repository. The maintainer must enable it before announcing the project. Do not report vulnerabilities in public issues or discussions.
+To report a vulnerability, email **security@damdle.com**. Do not publish vulnerability details in public issues or discussions. Include only the minimum information needed to arrange a secure report.
 
-Until private reporting is enabled, this scaffold has no verified security contact. Do not publish vulnerability details; contact the project owner through a verified private channel and include only the minimum information needed to arrange a secure report.
+GitHub private vulnerability reporting must be enabled on the public repository before it is announced. The maintainer is responsible for enabling this in the repository's **Security settings** on GitHub. Once enabled, it is the preferred reporting channel.
 
 ## Security boundaries
 

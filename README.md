@@ -8,7 +8,7 @@ The project is intended to support both Damdle-hosted agents and agents people r
 
 ## Project status
 
-This local folder is an independent Git repository scaffold nested in a checkout of the Damdle application. It contains a newly written portable agent prototype; the Damdle app's existing hosted runtime and MCP service have not been copied here. The app's relevant implementation boundaries and extraction risks are listed in [the extraction audit](docs/extraction-audit.md). This is not yet the public remote repository.
+This is an independent Git repository nested in a checkout of the Damdle application during active development. It contains a newly written portable agent prototype; the Damdle app's existing hosted runtime and MCP service have not been copied here. The app's relevant implementation boundaries and extraction risks are listed in [the extraction audit](docs/extraction-audit.md).
 
 See [Architecture](docs/architecture.md), [Roadmap](docs/roadmap.md), [Self-hosting](docs/self-hosting.md), [Contributing](CONTRIBUTING.md), [Security](SECURITY.md), [License decision](LICENSE-DECISION.md), and the first [portable contracts](packages/contracts/README.md). The core agent loop and local demo live under `packages/core` and `packages/examples/local`; the first-party [Damdle MCP adapter](packages/connectors/damdle-mcp/README.md) targets the app's existing remote MCP server. An initial [OpenAI Responses provider](packages/models/openai-responses/README.md) demonstrates a model integration without a vendor SDK dependency.
 
@@ -21,6 +21,8 @@ Run `npm run demo:mcp` to see that adapter dispatch an in-memory read tool witho
 
 ## Intended design principles
 
+See [LICENSE](LICENSE) for the software license and [TRADEMARK.md](TRADEMARK.md) for the Damdle name and brand policy.
+
 Read the [integration strategy](docs/integration-strategy.md) for the connector contract and the workflow-first plan for future founder surfaces. The [versioning policy](docs/versioning.md) describes the experimental contract boundaries. The [publication checklist](docs/publication-checklist.md) records the gates for creating the public repository.
 
 - **Portable:** can run as a hosted service or in a deployment controlled by the founder.
@@ -29,6 +31,10 @@ Read the [integration strategy](docs/integration-strategy.md) for the connector 
 - **Reviewable:** consequential actions have an approval path and an audit trail.
 - **Provider-flexible:** model and hosting choices are adapters, not assumptions baked into agent definitions.
 
-## Not ready for production
+## License and contributing
 
-No supported self-hosting recipe, stable public API, or open-source license has been published from this scaffold. The local demo is illustrative and has not been security-reviewed. The license and rights for code and non-code assets must be settled before public release.
+Licensed under the [Apache License 2.0](LICENSE). Copyright 2026 Damdle. The Damdle name and marks are covered separately — see [TRADEMARK.md](TRADEMARK.md).
+
+Contributions require a [DCO sign-off](https://developercertificate.org/) on every commit (`git commit --signoff`). See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+The local demo and local Node host are not yet production-ready and have not completed a security review. Do not connect production accounts until the project publishes a supported self-hosting recipe.

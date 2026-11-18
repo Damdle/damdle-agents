@@ -1,18 +1,14 @@
 # License and brand decision
 
-The project is intended to be open source, but this scaffold does not apply a license yet.
+## Decision
 
-## Proposed direction
+The software in this repository is licensed under the **Apache License 2.0**,
+copyright **2026 Damdle**. See [`LICENSE`](LICENSE) for the full license text.
 
-- Evaluate Apache License 2.0 for the software as a permissive, patent-granting license.
-- Treat code, documentation, brand assets, sample content, and third-party material as separate rights inventories.
-- Reserve Damdle names, logos, and mascot marks from the software license; publish a clear trademark/branding policy before release.
+Trademark and branding rights (the Damdle name, logo, and mascot) are
+**not** covered by the Apache 2.0 license. See [`TRADEMARK.md`](TRADEMARK.md)
+for the branding policy.
 
-## Still to decide
-
-- Final software license and copyright holder.
-- License for documentation and any reusable examples or assets.
-- Whether contributions are accepted under the project license directly or require a DCO/CLA.
-- Which existing application files can be relicensed or copied into the new repository, and whether all contributors have granted the needed rights.
-
-Get qualified legal review before publishing a license or making a rights claim. Until then, this folder is an internal scaffold and carries no grant of rights beyond those already applicable to the parent repository.
+> **Note:** Obtain qualified legal review before publishing or making any
+> rights claim. Until legal review is complete, this repository remains an
+> internal scaffold.

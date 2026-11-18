@@ -15,4 +15,12 @@ Thanks for your interest. Damdle Agents is being prepared for a separate public 
 
 Keep changes focused. Explain the user need, security implications, setup requirements, and how you checked the change. CI currently builds the TypeScript workspace and runs the local sample demo.
 
-No CLA or DCO is configured for this internal scaffold. Before accepting contributions in the public repository, the maintainer must finalize the contribution terms alongside the software license.
+## DCO sign-off
+
+Damdle Agents uses the [Developer Certificate of Origin](https://developercertificate.org/) (DCO). Every commit you submit must carry a `Signed-off-by` trailer with your real name and email:
+
+```
+git commit --signoff
+```
+
+By signing off you certify that the contribution is your own work (or work you have the right to submit) under the Apache License 2.0. Anonymous commits will not be merged.

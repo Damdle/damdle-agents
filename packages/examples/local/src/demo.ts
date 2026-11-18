@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Damdle
 import { runAgentTurn } from "../../../core/src/agent-runtime.js";
 import type { AgentManifest, AuditEvent, AuditSink, ConnectorConnection, ModelProvider, ModelRequest, ModelResponse } from "../../../contracts/src/index.js";
 import { LocalExampleConnector } from "./connector.js";

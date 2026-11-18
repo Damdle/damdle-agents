@@ -14,6 +14,11 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v7
+      - name: Check DCO sign-off
+        if: github.event_name == 'pull_request'
+        uses: dco-check/dco-check-action@v3
+        with:
+          require_all_good: true
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
