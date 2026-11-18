@@ -21,7 +21,7 @@ The portable interfaces live in `packages/contracts`. The dispatcher checks scop
 | Layer | Purpose | Initial direction |
 | --- | --- | --- |
 | Damdle ecosystem | Founder identity, Build Space, discovery, opportunities, hosted agents, and approval UI | First-party MCP connector, implemented |
-| Work communication | Draft and, with explicit approval, send messages in places founders already communicate | Slack, email, and WhatsApp connectors after the core approval contract is validated |
+| Work communication | Draft and, with explicit approval, send messages in places founders already communicate | Slack, email, and WhatsApp connectors after the core approval contract is validated; generic MCP can cover read/draft services now |
 | Work systems | Read context and prepare changes in planning, code, CRM, and finance tools | Add one connector per workflow; avoid broad administrator scopes |
 | Agent-to-agent | Discover, inspect, request, and use hosted or external agents | Damdle catalog and delegation tools are the first implementation |
 | Local resources | Files, calendars, and local development tools | Opt-in local connectors with OS-level isolation and narrow paths |
@@ -46,3 +46,5 @@ Before merging a connector, verify that:
 The ecosystem remains the place where founder identity, Damdle permissions, hosted-agent access, and high-impact approvals are managed. Damdle Agents supplies the actor layer and connector protocol. This lets a founder run an agent locally or on private infrastructure while preserving Damdle's service-side authorization when the agent uses ecosystem capabilities.
 
 The next integration should be selected from observed founder workflows, not from the number of available APIs. A small set of deep, permissioned connectors is more useful than a catalog of shallow tools that cannot explain what an agent is allowed to do.
+
+For an MCP service without a first-party adapter, use `packages/connectors/mcp` with an explicit manifest. Do not auto-import the remote tool list into the agent. Keep write-capable services behind a dedicated connector until their approval semantics are documented and enforced.
