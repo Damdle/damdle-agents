@@ -27,6 +27,14 @@ const manifest: ConnectorManifest = {
       title: "Search sample resources",
       description: "Find an example tool for a startup task.",
       inputSchema: { type: "object", properties: { query: { type: "string", maxLength: 80 } }, additionalProperties: false },
+      outputSchema: {
+        type: "object",
+        properties: {
+          items: { type: "array", items: { type: "object", properties: { id: { type: "string" }, title: { type: "string" }, task: { type: "string" } }, required: ["id", "title", "task"], additionalProperties: false } },
+        },
+        required: ["items"],
+        additionalProperties: false,
+      },
       requiredScopes: [READ_SCOPE],
       risk: "read",
     },

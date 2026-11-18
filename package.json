@@ -9,6 +9,7 @@
   "scripts": {
     "agent": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/hosts/node-local/src/cli.ts",
     "build": "tsc -p tsconfig.json",
+    "test": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs --test packages/core/src/dispatch.test.ts",
     "demo": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/examples/local/src/demo.ts",
     "demo:mcp": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/examples/generic-mcp/src/demo.ts",
     "check:publication": "node scripts/check-publication.mjs"

@@ -14,6 +14,7 @@ export type DispatchFailureCode =
   | "unknown_tool"
   | "scope_denied"
   | "invalid_input"
+  | "invalid_output"
   | "audit_unavailable"
   | "connector_failed"
   | "invalid_outcome";
@@ -137,6 +138,32 @@ export async function dispatchTool(
   if (!isValidOutcomeForRisk(tool.risk, outcome)) {
     await audit.record(makeEvent("failed", tool.risk, "Connector returned an outcome inconsistent with the declared risk.")).catch(() => undefined);
     throw new DispatchError("invalid_outcome", `Connector returned an invalid outcome for ${tool.risk}-risk tool: ${tool.id}`);
+  }
+
+  if (outcome.status === "proposed") {
+    let validProposalInput = false;
+    try {
+      validProposalInput = outcome.proposal.toolId === tool.id && ajv.validate(tool.inputSchema, outcome.proposal.input);
+    } catch {
+      validProposalInput = false;
+    }
+    if (!validProposalInput) {
+      await audit.record(makeEvent("failed", tool.risk, "Connector returned a proposal for a different tool or with invalid arguments.")).catch(() => undefined);
+      throw new DispatchError("invalid_outcome", `Connector returned an invalid proposal for tool: ${tool.id}`);
+    }
+  }
+
+  if (outcome.status === "completed" && tool.outputSchema) {
+    let validOutput = false;
+    try {
+      validOutput = ajv.validate(tool.outputSchema, outcome.output);
+    } catch {
+      validOutput = false;
+    }
+    if (!validOutput) {
+      await audit.record(makeEvent("failed", tool.risk, "Connector output did not match the declared schema.")).catch(() => undefined);
+      throw new DispatchError("invalid_output", `Connector returned an invalid output for tool: ${tool.id}`);
+    }
   }
 
   const finalStatus = outcome.status === "proposed" ? "proposed" : "completed";

@@ -79,6 +79,8 @@ export interface ToolManifest {
   readonly title: string;
   readonly description: string;
   readonly inputSchema: JsonSchema;
+  /** Optional JSON Schema for completed tool output. When supplied, the host validates it. */
+  readonly outputSchema?: JsonSchema;
   readonly requiredScopes: readonly string[];
   readonly risk: RiskLevel;
 }
@@ -121,8 +123,36 @@ export type ToolOutcome =
   | { readonly status: "proposed"; readonly proposal: ActionProposal };
 
 /** Enforces the contract that write-risk tools propose first; only read/draft tools complete inline. */
-export function isValidOutcomeForRisk(risk: RiskLevel, outcome: ToolOutcome): boolean {
-  return risk === "write" ? outcome.status === "proposed" : outcome.status === "completed";
+export function isValidOutcomeForRisk(risk: RiskLevel, outcome: unknown): outcome is ToolOutcome {
+  if (typeof outcome !== "object" || outcome === null || Array.isArray(outcome)) return false;
+  const candidate = outcome as Record<string, unknown>;
+  if (risk !== "write") return candidate.status === "completed" && isJsonValue(candidate.output);
+
+  if (candidate.status !== "proposed" || typeof candidate.proposal !== "object" || candidate.proposal === null || Array.isArray(candidate.proposal)) return false;
+  const proposal = candidate.proposal as Record<string, unknown>;
+  return typeof proposal.id === "string"
+    && proposal.id.length > 0
+    && typeof proposal.toolId === "string"
+    && typeof proposal.summary === "string"
+    && proposal.summary.length > 0
+    && isJsonValue(proposal.input)
+    && (proposal.createdAt === undefined || typeof proposal.createdAt === "string")
+    && (proposal.expiresAt === undefined || typeof proposal.expiresAt === "string")
+    && (proposal.approvalUrl === undefined || typeof proposal.approvalUrl === "string");
+}
+
+function isJsonValue(value: unknown, ancestors = new Set<object>()): value is JsonValue {
+  if (value === null || typeof value === "string" || typeof value === "boolean") return true;
+  if (typeof value === "number") return Number.isFinite(value);
+  if (typeof value !== "object") return false;
+  if (ancestors.has(value)) return false;
+  ancestors.add(value);
+  const valid = Array.isArray(value)
+    ? value.every((item) => isJsonValue(item, ancestors))
+    : (Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null)
+      && Object.values(value).every((item) => isJsonValue(item, ancestors));
+  ancestors.delete(value);
+  return valid;
 }
 
 export interface ConnectorManifest {

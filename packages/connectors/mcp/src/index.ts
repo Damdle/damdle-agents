@@ -25,6 +25,7 @@ export interface GenericMcpToolDefinition {
   readonly title: string;
   readonly description: string;
   readonly inputSchema: { readonly [key: string]: JsonValue };
+  readonly outputSchema?: { readonly [key: string]: JsonValue };
   readonly requiredScopes: readonly string[];
   readonly risk: "read" | "draft";
 }
