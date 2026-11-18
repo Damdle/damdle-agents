@@ -73,4 +73,4 @@ This host treats installed connector code as trusted code and does not sandbox p
 
 ## Not supported yet
 
-The project does not yet provide a container image, a non-interactive device authorization flow, cross-device conversation synchronization, or a self-hosted replacement for the Damdle ecosystem service. Those are separate roadmap items and should not be inferred from this local host.
+The project does not yet provide a production agent-host container, a non-interactive device authorization flow, cross-device conversation synchronization, or a self-hosted replacement for the Damdle ecosystem service. `Dockerfile.demo` is only a credential-free contributor demo and should not be inferred to provide those capabilities.
