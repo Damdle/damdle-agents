@@ -4,7 +4,7 @@ This repository is an internal release candidate. Complete every owner gate befo
 
 ## Workspace checks
 
-- [ ] Review every tracked file and confirm that no secrets, user data, private URLs, production audit data, or branded assets are present.
+- [ ] Run `npm run check:publication`, then review every tracked file and confirm that no secrets, user data, private URLs, production audit data, or branded assets are present. The command is only a narrow pattern scan.
 - [ ] Review direct and transitive dependency licenses and security advisories.
 - [ ] Run `npm ci`, `npm run build`, `npm run agent -- --help`, and `npm run demo` from a clean checkout.
 - [ ] Review the OAuth and Damdle connector behavior with an authorized test account, including sign-in, refresh, scope denial, proposal creation, expiry, and revocation.

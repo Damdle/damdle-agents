@@ -10,7 +10,8 @@
     "agent": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/hosts/node-local/src/cli.ts",
     "build": "tsc -p tsconfig.json",
     "demo": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/examples/local/src/demo.ts",
-    "demo:mcp": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/examples/generic-mcp/src/demo.ts"
+    "demo:mcp": "node --experimental-strip-types --import ./scripts/register-typescript-loader.mjs packages/examples/generic-mcp/src/demo.ts",
+    "check:publication": "node scripts/check-publication.mjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
