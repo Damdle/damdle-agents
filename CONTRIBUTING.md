@@ -1,6 +1,6 @@
 # Contributing to Damdle Agents
 
-Thanks for your interest. Damdle Agents is being prepared for a separate public repository; this scaffold is not accepting public pull requests yet.
+Thanks for your interest. Damdle Agents is currently in a private pre-release repository. Public pull requests will be accepted after the first public release and maintainer support process are announced.
 
 ## Before contributing
 

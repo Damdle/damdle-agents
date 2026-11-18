@@ -8,7 +8,7 @@ The project is intended to support both Damdle-hosted agents and agents people r
 
 ## Project status
 
-This is an independent Git repository nested in a checkout of the Damdle application during active development. It contains a newly written portable agent prototype; the Damdle app's existing hosted runtime and MCP service have not been copied here. The app's relevant implementation boundaries and extraction risks are listed in [the extraction audit](docs/extraction-audit.md).
+This is an independent Git repository nested in a checkout of the Damdle application during active development. It contains a newly written portable agent prototype; the Damdle app's hosted runtime, database schema, and private service code are not included. See the [public architecture boundary](docs/architecture-boundary.md) for what this repository does and does not contain.
 
 See [Architecture](docs/architecture.md), [Roadmap](docs/roadmap.md), [Self-hosting](docs/self-hosting.md), [Contributing](CONTRIBUTING.md), [Security](SECURITY.md), [License decision](LICENSE-DECISION.md), and the first [portable contracts](packages/contracts/README.md). The core agent loop and local demo live under `packages/core` and `packages/examples/local`; the first-party [Damdle MCP adapter](packages/connectors/damdle-mcp/README.md) targets the app's existing remote MCP server. An initial [OpenAI Responses provider](packages/models/openai-responses/README.md) demonstrates a model integration without a vendor SDK dependency.
 
