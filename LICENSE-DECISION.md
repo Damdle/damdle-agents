@@ -1,4 +1,4 @@
-# License and brand decision
+# License and branding
 
 ## Decision
 
@@ -9,6 +9,6 @@ Trademark and branding rights (the Damdle name, logo, and mascot) are
 **not** covered by the Apache 2.0 license. See [`TRADEMARK.md`](TRADEMARK.md)
 for the branding policy.
 
-> **Note:** Obtain qualified legal review before publishing or making any
-> rights claim. Until legal review is complete, this repository remains an
-> internal scaffold.
+The software license and trademark policy are separate by design: Apache 2.0
+applies to the source code, while the Damdle name and marks remain subject to
+the trademark policy.
