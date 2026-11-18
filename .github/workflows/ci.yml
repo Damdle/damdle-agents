@@ -27,3 +27,5 @@ jobs:
         run: npm run agent -- --help
       - name: Run local demo
         run: npm run demo
+      - name: Run generic MCP demo
+        run: npm run demo:mcp
