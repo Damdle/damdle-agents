@@ -1,5 +1,6 @@
 import {
   hasRequiredScopes,
+  isConnectionActive,
   isValidOutcomeForRisk,
   type AgentConnector,
   type AuditEvent,
@@ -95,6 +96,13 @@ export async function dispatchTool(
       throw new DispatchError("audit_unavailable", "The tool call was refused because its audit event could not be recorded.", { cause });
     });
     throw new DispatchError("scope_denied", `Missing permission for tool: ${tool.id}`);
+  }
+
+  if (!isConnectionActive(invocation.connection, now())) {
+    await audit.record(makeEvent("denied", tool.risk, "Connector authorization has expired or is invalid.")).catch((cause: unknown) => {
+      throw new DispatchError("audit_unavailable", "The tool call was refused because its audit event could not be recorded.", { cause });
+    });
+    throw new DispatchError("scope_denied", `Connector authorization has expired for tool: ${tool.id}`);
   }
 
   let validInput = false;

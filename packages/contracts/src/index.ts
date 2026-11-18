@@ -91,6 +91,13 @@ export interface ConnectorConnection {
   readonly expiresAt?: string;
 }
 
+/** Returns false for malformed or expired authorization timestamps. Hosts should fail closed. */
+export function isConnectionActive(connection: ConnectorConnection, now = new Date()): boolean {
+  if (!connection.expiresAt) return true;
+  const expiresAt = Date.parse(connection.expiresAt);
+  return Number.isFinite(expiresAt) && expiresAt > now.getTime();
+}
+
 export interface ToolInvocation {
   readonly id: string;
   readonly toolId: string;

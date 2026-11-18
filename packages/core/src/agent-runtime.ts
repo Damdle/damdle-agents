@@ -1,5 +1,6 @@
 import {
   hasRequiredScopes,
+  isConnectionActive,
   type ActionProposal,
   type AgentManifest,
   type AgentMessage,
@@ -66,7 +67,8 @@ const availableTools = (
 ): ModelTool[] => {
   const declared = new Set(agent.requestedScopes);
   return bindings.flatMap(({ connector, connection }) => connector.manifest.tools
-    .filter((tool) => hasRequiredScopes(tool.requiredScopes, agent.requestedScopes)
+    .filter((tool) => isConnectionActive(connection)
+      && hasRequiredScopes(tool.requiredScopes, agent.requestedScopes)
       && hasRequiredScopes(tool.requiredScopes, connection.grantedScopes))
     .map((tool) => ({ connectorId: connector.manifest.id, tool: { ...tool, requiredScopes: [...tool.requiredScopes.filter((scope) => declared.has(scope))] } })));
 };
