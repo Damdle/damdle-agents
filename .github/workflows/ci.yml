@@ -14,11 +14,26 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - name: Check DCO sign-off
         if: github.event_name == 'pull_request'
-        uses: dco-check/dco-check-action@v3
-        with:
-          require_all_good: true
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          missing=0
+          while IFS= read -r commit; do
+            if ! git show -s --format=%B "$commit" | grep -qE '^Signed-off-by: .+ <.+@.+>$'; then
+              echo "Missing Signed-off-by trailer: $commit"
+              git show -s --format='%h %s' "$commit"
+              missing=1
+            fi
+          done < <(git rev-list "$BASE_SHA..$HEAD_SHA")
+          if [ "$missing" -ne 0 ]; then
+            echo "Every pull request commit must include a Signed-off-by trailer."
+            exit 1
+          fi
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
